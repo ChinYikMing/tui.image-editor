@@ -13,12 +13,23 @@ const command = {
    * @param {string} imgUrl - Image Url
    * @returns {Promise}
    */
-  execute(graphics, imageName, imgUrl) {
+  execute(graphics, imageName, imgUrl, trig) {
     const loader = graphics.getComponent(IMAGE_LOADER);
     const prevImage = loader.getCanvasImage();
     const prevImageWidth = prevImage ? prevImage.width : 0;
     const prevImageHeight = prevImage ? prevImage.height : 0;
-    const objects = graphics.removeAll(true).filter((objectItem) => objectItem.type !== 'cropzone');
+    let objects;
+
+    // console.log(trig);
+    // console.trace();
+
+    if (trig === 'btn') {
+      objects = graphics.removeAll(true).filter((objectItem) => objectItem.type !== 'cropzone');
+    } else {
+      objects = graphics.removeAll(false).filter((objectItem) => objectItem.type !== 'cropzone');
+    }
+
+    // console.trace();
 
     objects.forEach((objectItem) => {
       objectItem.evented = true;

@@ -11,55 +11,36 @@ export default ({ locale, makeSvgIcon }) => `
                 <div>
                     ${makeSvgIcon(['normal', 'active'], 'text-bold', true)}
                 </div>
-                <label> ${locale.localize('Bold')} </label>
+                <label> ${locale.localize('粗體')} </label>
             </div>
             <div class="tui-image-editor-button italic">
                 <div>
                     ${makeSvgIcon(['normal', 'active'], 'text-italic', true)}
                 </div>
-                <label> ${locale.localize('Italic')} </label>
+                <label> ${locale.localize('斜體')} </label>
             </div>
             <div class="tui-image-editor-button underline">
                 <div>
                     ${makeSvgIcon(['normal', 'active'], 'text-underline', true)}
                 </div>
-                <label> ${locale.localize('Underline')} </label>
+                <label> ${locale.localize('底線')} </label>
             </div>
         </li>
         <li class="tui-image-editor-partition">
             <div></div>
         </li>
         <li class="tie-text-align-button">
-            <div class="tui-image-editor-button left">
-                <div>
-                    ${makeSvgIcon(['normal', 'active'], 'text-align-left', true)}
-                </div>
-                <label> ${locale.localize('Left')} </label>
-            </div>
             <div class="tui-image-editor-button center">
-                <div>
-                    ${makeSvgIcon(['normal', 'active'], 'text-align-center', true)}
-                </div>
-                <label> ${locale.localize('Center')} </label>
             </div>
-            <div class="tui-image-editor-button right">
-                <div>
-                    ${makeSvgIcon(['normal', 'active'], 'text-align-right', true)}
-                </div>
-                <label> ${locale.localize('Right')} </label>
-            </div>
-        </li>
-        <li class="tui-image-editor-partition">
-            <div></div>
         </li>
         <li>
-            <div class="tie-text-color" title="${locale.localize('Color')}"></div>
+            <div class="tie-text-color" title="${locale.localize('顏色')}"></div>
         </li>
         <li class="tui-image-editor-partition only-left-right">
             <div></div>
         </li>
         <li class="tui-image-editor-newline tui-image-editor-range-wrap">
-            <label class="range">${locale.localize('Text size')}</label>
+            <label class="range">${locale.localize('大小')}</label>
             <div class="tie-text-range"></div>
             <input class="tie-text-range-value tui-image-editor-range-value" value="0" />
         </li>

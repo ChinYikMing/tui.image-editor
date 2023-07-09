@@ -87,9 +87,14 @@ class Mask extends Submenu {
 
     if (file) {
       imgUrl = URL.createObjectURL(file);
-      this.actions.loadImageFromURL(imgUrl, file);
+      const ret = this.actions.loadImageFromURL(imgUrl, file);
+      ret.callback().then(() => {
+        ret.reset('loadImage');
+      });
       this._els.applyButton.classList.add('active');
     }
+
+    // console.trace();
   }
 }
 

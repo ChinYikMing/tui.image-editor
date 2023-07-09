@@ -12,7 +12,7 @@ export default ({ locale, makeSvgIcon }) => `
                     ${makeSvgIcon(['normal', 'active'], 'draw-free', true)}
                 </div>
                 <label>
-                    ${locale.localize('Free')}
+                    ${locale.localize('無規則線段')}
                 </label>
             </div>
             <div class="tui-image-editor-button line">
@@ -20,7 +20,7 @@ export default ({ locale, makeSvgIcon }) => `
                     ${makeSvgIcon(['normal', 'active'], 'draw-line', true)}
                 </div>
                 <label>
-                    ${locale.localize('Straight')}
+                    ${locale.localize('直線')}
                 </label>
             </div>
         </li>
@@ -28,13 +28,13 @@ export default ({ locale, makeSvgIcon }) => `
             <div></div>
         </li>
         <li>
-            <div class="tie-draw-color" title="${locale.localize('Color')}"></div>
+            <div class="tie-draw-color" title="${locale.localize('顏色')}"></div>
         </li>
         <li class="tui-image-editor-partition only-left-right">
             <div></div>
         </li>
         <li class="tui-image-editor-newline tui-image-editor-range-wrap">
-            <label class="range">${locale.localize('Range')}</label>
+            <label class="range">${locale.localize('寬度')}</label>
             <div class="tie-draw-range"></div>
             <input class="tie-draw-range-value tui-image-editor-range-value" value="0" />
         </li>

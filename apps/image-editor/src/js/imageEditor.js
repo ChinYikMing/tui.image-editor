@@ -748,12 +748,12 @@ class ImageEditor {
    *      console.log('new : ' + result.newWidth + ', ' + result.newHeight);
    * });
    */
-  loadImageFromURL(url, imageName) {
+  loadImageFromURL(url, imageName, trig) {
     if (!imageName || !url) {
       return Promise.reject(rejectMessages.invalidParameters);
     }
 
-    return this.execute(commands.LOAD_IMAGE, imageName, url);
+    return this.execute(commands.LOAD_IMAGE, imageName, url, trig);
   }
 
   /**

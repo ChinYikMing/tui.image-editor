@@ -14,6 +14,8 @@ const command = {
     return graphics.addImageObject(imgUrl).then((objectProps) => {
       this.undoData.object = graphics.getObject(objectProps.id);
 
+      // console.trace();
+
       return objectProps;
     });
   },

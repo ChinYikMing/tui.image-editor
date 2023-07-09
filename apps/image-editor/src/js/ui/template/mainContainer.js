@@ -17,8 +17,10 @@ export default ({
                     ${locale.localize('Load')}
                     <input type="file" class="tui-image-editor-load-btn" />
                 </div>
+                <label for="shapeWidthSize" style="color: #fff">形狀大小(px): </label>
+                <input type="number" name="shapeWidthSize" id="shapeWidthSize" value="50" style="height: 40px; width: 150px; font-size: 20px;">
                 <button class="tui-image-editor-download-btn" style="${downloadButtonStyle}">
-                    ${locale.localize('Download')}
+                    ${locale.localize('下載圖片')}
                 </button>
             </div>
         </div>

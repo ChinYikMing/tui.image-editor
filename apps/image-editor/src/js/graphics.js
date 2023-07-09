@@ -267,10 +267,17 @@ class Graphics {
   removeAll(includesBackground) {
     const canvas = this._canvas;
     const objects = canvas.getObjects().slice();
-    canvas.remove(...this._canvas.getObjects());
+    // canvas.remove(...this._canvas.getObjects());
 
     if (includesBackground) {
+      canvas.remove(...this._canvas.getObjects());
       canvas.clear();
+    }
+
+    if (includesBackground) {
+      // console.log('before', canvas);
+      // canvas.clear();
+      // console.log('after', canvas);
     }
 
     return objects;
@@ -1070,13 +1077,21 @@ class Graphics {
    */
   _callbackAfterLoadingImageObject(obj) {
     const centerPos = this.getCanvasImage().getCenterPoint();
+    const shapeWidthSizeInput = document.querySelector('#shapeWidthSize');
+    // const shapeHeightSizeInput = document.querySelector('#shapeHeightSize');
+    const shapeWidth = parseInt(shapeWidthSizeInput.value, 10);
+    // const shapeHeight = parseInt(shapeHeightSizeInput.value, 10);
 
     obj.set(fObjectOptions.SELECTION_STYLE);
     obj.set({
       left: centerPos.x,
       top: centerPos.y,
       crossOrigin: 'Anonymous',
+      // width: shapeWidth,
+      // height: shapeHeight,
     });
+    obj.scaleToWidth(shapeWidth);
+    // obj.scaleToHeight(shapeHeight);
 
     this.getCanvas().add(obj).setActiveObject(obj);
   }

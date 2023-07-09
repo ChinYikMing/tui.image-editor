@@ -551,10 +551,26 @@ class Ui {
    * @private
    */
   _addTooltipAttribute(element, tooltipName) {
-    element.setAttribute(
-      'tooltip-content',
-      this._locale.localize(tooltipName.replace(/^[a-z]/g, ($0) => $0.toUpperCase()))
-    );
+    if (tooltipName === 'draw') {
+      element.setAttribute('tooltip-content', this._locale.localize('線段'));
+    } else if (tooltipName === 'text') {
+      element.setAttribute('tooltip-content', this._locale.localize('文字'));
+    } else if (tooltipName === 'mask') {
+      element.setAttribute('tooltip-content', this._locale.localize('上傳形狀'));
+    } else if (tooltipName === 'flip') {
+      element.setAttribute('tooltip-content', this._locale.localize('翻轉'));
+    } else if (tooltipName === 'redo') {
+      element.setAttribute('tooltip-content', this._locale.localize('下一步'));
+    } else if (tooltipName === 'undo') {
+      element.setAttribute('tooltip-content', this._locale.localize('上一步'));
+    } else if (tooltipName === 'reset') {
+      element.setAttribute('tooltip-content', this._locale.localize('重置'));
+    } else {
+      element.setAttribute(
+        'tooltip-content',
+        this._locale.localize(tooltipName.replace(/^[a-z]/g, ($0) => $0.toUpperCase()))
+      );
+    }
   }
 
   /**

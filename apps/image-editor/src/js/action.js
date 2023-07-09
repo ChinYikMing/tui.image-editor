@@ -106,9 +106,27 @@ export default {
             this.redo().then(onEndUndoRedo);
           }
         },
-        reset: () => {
+        reset: (trigger = 'btn') => {
+          if (trigger === 'loadImage') {
+            exitCropOnAction();
+            this.loadImageFromURL(this.ui.initializeImgUrl, 'resetImage', 'l').then((sizeValue) => {
+              exitCropOnAction();
+              initFilterState();
+              this.ui.resizeEditor({ imageSize: sizeValue });
+              this.clearUndoStack();
+              this._initHistory();
+            });
+
+            return;
+          }
+
+          const yes = window.confirm('確認重置？');
+          if (yes === false) {
+            return;
+          }
+
           exitCropOnAction();
-          this.loadImageFromURL(this.ui.initializeImgUrl, 'resetImage').then((sizeValue) => {
+          this.loadImageFromURL(this.ui.initializeImgUrl, 'resetImage', 'btn').then((sizeValue) => {
             exitCropOnAction();
             initFilterState();
             this.ui.resizeEditor({ imageSize: sizeValue });
@@ -269,13 +287,31 @@ export default {
   _maskAction() {
     return extend(
       {
-        loadImageFromURL: (imgUrl, file) => {
-          return this.loadImageFromURL(this.toDataURL(), 'FilterImage').then(() => {
-            this.addImageObject(imgUrl).then(() => {
+        loadImageFromURL: (imgUrl, file, trigger) => {
+          const ret = {
+            reset: this.ui._actions.main.reset,
+            callback: async () => {
+              await this.loadImageFromURL(this.toDataURL(), 'FilterImage', trigger);
+              await this.addImageObject(imgUrl);
               URL.revokeObjectURL(file);
-            });
-            this._invoker.fire(eventNames.EXECUTE_COMMAND, historyNames.LOAD_MASK_IMAGE);
-          });
+              this._invoker.fire(eventNames.EXECUTE_COMMAND, historyNames.LOAD_MASK_IMAGE);
+            },
+          };
+
+          // console.log(this.ui._actions.main.reset);
+
+          return ret;
+          // return inv;
+
+          // return this.loadImageFromURL(this.toDataURL(), 'FilterImage').then(() => {
+          //   this.addImageObject(imgUrl).then(() => {
+          //     URL.revokeObjectURL(file);
+
+          //     return inv;
+          //   });
+          //   this._invoker.fire(eventNames.EXECUTE_COMMAND, historyNames.LOAD_MASK_IMAGE);
+          //   // console.trace();
+          // });
         },
         applyFilter: () => {
           this.applyFilter('mask', {

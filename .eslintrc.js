@@ -26,6 +26,8 @@ module.exports = {
         AssignmentExpression: { array: false, object: false },
       },
     ],
+    'prettier/prettier': ['error', { endOfLine: 'crlf' }],
+    "complexity": ["error", { "max": 20 }]
   },
   overrides: [
     {
