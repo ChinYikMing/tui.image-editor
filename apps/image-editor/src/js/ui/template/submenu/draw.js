@@ -15,14 +15,6 @@ export default ({ locale, makeSvgIcon }) => `
                     ${locale.localize('無規則線段')}
                 </label>
             </div>
-            <div class="tui-image-editor-button line">
-                <div>
-                    ${makeSvgIcon(['normal', 'active'], 'draw-line', true)}
-                </div>
-                <label>
-                    ${locale.localize('直線')}
-                </label>
-            </div>
         </li>
         <li class="tui-image-editor-partition">
             <div></div>
